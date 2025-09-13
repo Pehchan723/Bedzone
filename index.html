@@ -3,110 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DreamBed - Premium Bedding & Sleep Solutions</title>
+    <title>PureSalt Industries - Premium Salt Manufacturing Company Pakistan</title>
+    <meta name="description" content="Leading salt manufacturing company in Pakistan. Premium industrial, food grade, pharmaceutical and specialty salt products. ISO certified quality.">
     
-    <!-- Snipcart CSS -->
-    <link rel="preconnect" href="https://app.snipcart.com">
-    <link rel="preconnect" href="https://cdn.snipcart.com">
-    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css" />
-    
-    <!-- Tailwind CSS -->
+    <!-- TailwindCSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Custom Styles -->
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        
-        * {
-            font-family: 'Inter', sans-serif;
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --accent: #f97316;
+            --accent-dark: #ea580c;
+            --success: #10b981;
+            --success-dark: #059669;
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        body { 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth;
         }
         
-        .product-card {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+        .font-display { font-family: 'Playfair Display', serif; }
+        .bg-primary { background-color: var(--primary); }
+        .bg-primary-dark { background-color: var(--primary-dark); }
+        .bg-accent { background-color: var(--accent); }
+        .bg-accent-dark { background-color: var(--accent-dark); }
+        .text-primary { color: var(--primary); }
+        .text-accent { color: var(--accent); }
+        .border-primary { border-color: var(--primary); }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
         }
         
-        .product-card:hover {
-            transform: translateY(-8px);
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-12px);
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--primary);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 12px;
+            font-weight: 600;
             transition: all 0.3s ease;
         }
-        
-        .btn-primary:hover {
+        .btn-accent:hover {
+            background: var(--accent-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(102, 126, 234, 0.4);
         }
         
-        .hero-section {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 50%, #581c87 100%);
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .floating-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+        }
+        
+        .whatsapp-btn { background: #25d366; }
+        .call-btn { background: #007bff; }
+        
+        .modal-overlay {
+            backdrop-filter: blur(10px);
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        
+        .product-image {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 4rem;
+            transition: all 0.3s ease;
+        }
+        .product-image:hover {
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .navbar-scroll {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .section-padding { padding: 100px 0; }
+        
+        @media (max-width: 768px) {
+            .section-padding { padding: 60px 0; }
+            .stats-counter { font-size: 2rem; }
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 1rem;
+        }
+        
+        .team-card {
             position: relative;
             overflow: hidden;
+            border-radius: 20px;
         }
-        
-        .hero-section::before {
-            content: '';
+        .team-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="300" cy="700" r="120" fill="url(%23a)"/></svg>');
-            opacity: 0.3;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .team-card:hover .team-overlay {
+            opacity: 1;
         }
         
-        .floating-animation {
-            animation: float 6s ease-in-out infinite;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 64, 175, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
         }
         
-        .category-pill {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
         }
-        
-        .cart-count {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-            animation: pulse 2s infinite;
+        .mobile-menu.active {
+            transform: translateX(0);
         }
     </style>
 </head>
+
 <body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <h1 class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">BedZone</h1>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-80 bg-white shadow-2xl z-50 md:hidden">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <div class="logo">
+                    <div class="logo-icon">PS</div>
+                    <span class="text-xl font-bold text-gray-900">PureSalt</span>
                 </div>
-                
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
-                        <a href="#products" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Products</a>
-                        <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">About</a>
-                        <a href="#contact" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                <button id="closeMobileMenu" class="text-gray-600">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
+            </div>
+            <nav class="space-y-4">
+                <a href="#home" class="block py-3 text-lg text-gray-700 hover:text-primary border-b">Home</a>
+                <a href="#about" class="block py-3 text-lg text-gray-700 hover:text-primary border-b">About</a>
+                <a href="#products" class="block py-3 text-lg text-gray-700 hover:text-primary border-b">Products</a>
+                <a href="#services" class="block py-3 text-lg text-gray-700 hover:text-primary border-b">Services</a>
+                <a href="#gallery" class="block py-3 text-lg text-gray-700 hover:text-primary border-b">Gallery</a>
+                <a href="#team" class="block py-3 text-lg text-gray-700 hover:text-primary border-b">Team</a>
+                <a href="#testimonials" class="block py-3 text-lg text-gray-700 hover:text-primary border-b">Reviews</a>
+                <a href="#contact" class="block py-3 text-lg text-gray-700 hover:text-primary border-b">Contact</a>
+                <button onclick="showBookingForm()" class="w-full btn-accent mt-6">Contact Us</button>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <nav id="navbar" class="fixed w-full top-0 z-40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="logo">
+                    <div class="logo-icon">PS</div>
+                    <div>
+                        <div class="text-xl font-bold text-gray-900">PureSalt Industries</div>
+                        <div class="text-xs text-gray-600">Premium Salt Manufacturing</div>
                     </div>
                 </div>
                 
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-primary transition-colors font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-primary transition-colors font-medium">About</a>
+                    <a href="#products" class="nav-link text-gray-700 hover:text-primary transition-colors font-medium">Products</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-primary transition-colors font-medium">Services</a>
+                    <a href="#gallery" class="nav-link text-gray-700 hover:text-primary transition-colors font-medium">Gallery</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-primary transition-colors font-medium">Contact</a>
+                </div>
+                
                 <div class="flex items-center space-x-4">
-                    <button class="snipcart-checkout relative p-2 text-gray-600 hover:text-blue-600 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m-.4-2L5 3m2 10v6a1 1 0 001 1h8a1 1 0 001-1v-6m-10 0V9a1 1 0 011-1h8a1 1 0 011 1v4.1"></path>
-                        </svg>
-                        <span class="snipcart-items-count cart-count absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center"></span>
+                    <button onclick="showBookingForm()" class="hidden md:block btn-accent">
+                        Book Consultation
+                    </button>
+                    <button id="openMobileMenu" class="md:hidden text-gray-700">
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
@@ -114,259 +318,609 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section relative min-h-screen flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="home" class="hero-gradient text-white min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="text-white">
-                    <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                        Premium Sleep
-                        <span class="block gradient-bg bg-clip-text text-transparent">Experience</span>
-                    </h2>
-                    <p class="text-xl mb-8 text-blue-100 leading-relaxed">
-                        Discover luxurious bedding and sleep solutions that transform your bedroom into a sanctuary of comfort. Quality guaranteed, dreams delivered.
+                <div data-aos="fade-right">
+                    <h1 class="text-5xl lg:text-7xl font-display font-bold mb-6 leading-tight">
+                        Pakistan's Premier <span class="text-orange-400">Salt</span> Manufacturing
+                    </h1>
+                    <p class="text-xl lg:text-2xl mb-8 opacity-90 leading-relaxed">
+                        Delivering world-class salt products for over 50+ years. From industrial applications to gourmet cuisine, we provide premium quality salt solutions across Pakistan and beyond.
                     </p>
-                    <div class="flex flex-wrap gap-4 mb-8">
-                        <span class="category-pill px-4 py-2 rounded-full text-sm font-medium text-white">🛏️ Bedding Sets</span>
-                        <span class="category-pill px-4 py-2 rounded-full text-sm font-medium text-white">🛌 Mattresses</span>
-                        <span class="category-pill px-4 py-2 rounded-full text-sm font-medium text-white">🪶 Pillows</span>
-                        <span class="category-pill px-4 py-2 rounded-full text-sm font-medium text-white">🧸 Comforters</span>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <button onclick="scrollToProducts()" class="btn-accent text-lg px-8 py-4">
+                            <i class="fas fa-cube mr-2"></i> Explore Products
+                        </button>
+                        <button onclick="showBookingForm()" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-primary transition-colors text-lg">
+                            <i class="fas fa-calendar-check mr-2"></i> Get Quote
+                        </button>
                     </div>
-                    <a href="#products" class="btn-primary inline-block px-8 py-4 rounded-lg text-white font-semibold text-lg shadow-xl">
-                        Shop Now
-                    </a>
+                    <div class="grid grid-cols-3 gap-8 text-center">
+                        <div>
+                            <div class="stats-counter">50+</div>
+                            <div class="text-orange-200">Years Experience</div>
+                        </div>
+                        <div>
+                            <div class="stats-counter">1000+</div>
+                            <div class="text-orange-200">Happy Clients</div>
+                        </div>
+                        <div>
+                            <div class="stats-counter">15</div>
+                            <div class="text-orange-200">Product Types</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="floating-animation">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl blur-xl opacity-30"></div>
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                             alt="Luxury Bedding" 
-                             class="relative rounded-3xl shadow-2xl w-full">
+                <div data-aos="fade-left" class="relative">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-3xl p-8">
+                        <div class="text-center mb-6">
+                            <i class="fas fa-industry text-6xl text-orange-400 mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">ISO 9001:2015 Certified</h3>
+                            <p class="opacity-90">Quality you can trust</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="bg-white bg-opacity-10 rounded-xl p-4 text-center">
+                                <i class="fas fa-award text-orange-400 text-2xl mb-2"></i>
+                                <div>Premium Quality</div>
+                            </div>
+                            <div class="bg-white bg-opacity-10 rounded-xl p-4 text-center">
+                                <i class="fas fa-shipping-fast text-orange-400 text-2xl mb-2"></i>
+                                <div>Fast Delivery</div>
+                            </div>
+                            <div class="bg-white bg-opacity-10 rounded-xl p-4 text-center">
+                                <i class="fas fa-leaf text-orange-400 text-2xl mb-2"></i>
+                                <div>Eco-Friendly</div>
+                            </div>
+                            <div class="bg-white bg-opacity-10 rounded-xl p-4 text-center">
+                                <i class="fas fa-globe text-orange-400 text-2xl mb-2"></i>
+                                <div>Global Export</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section id="products" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Featured Bedding</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Handpicked premium bedding and sleep essentials designed to transform your bedroom into a luxury retreat.</p>
+    <!-- About Section -->
+    <section id="about" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6">About PureSalt Industries</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Leading Pakistan's salt industry with innovative manufacturing processes and unwavering commitment to quality since 1970.
+                </p>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Luxury Cotton Bedding Set" 
-                             class="w-full h-64 object-cover transition-transform duration-300 hover:scale-110">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">New</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Luxury Cotton Bedding Set</h3>
-                        <p class="text-gray-600 mb-4">Premium 100% organic cotton bedding set with 400 thread count. Includes duvet cover, fitted sheet, and pillowcases.</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-2xl font-bold text-blue-600">$149</span>
-                            <div class="flex items-center text-yellow-400">
-                                <span class="mr-1">⭐⭐⭐⭐⭐</span>
-                                <span class="text-gray-600 text-sm">(243)</span>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+                <div data-aos="fade-right">
+                    <div class="bg-gray-100 rounded-3xl p-8 text-center">
+                        <i class="fas fa-industry text-primary text-8xl mb-6"></i>
+                        <h3 class="text-3xl font-bold mb-4">State-of-the-Art Facility</h3>
+                        <p class="text-gray-600 mb-6">Modern manufacturing plant equipped with latest technology</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-xl p-4">
+                                <div class="text-2xl font-bold text-primary">500MT</div>
+                                <div class="text-sm text-gray-600">Daily Capacity</div>
+                            </div>
+                            <div class="bg-white rounded-xl p-4">
+                                <div class="text-2xl font-bold text-primary">99.9%</div>
+                                <div class="text-sm text-gray-600">Purity Level</div>
                             </div>
                         </div>
-                        <button class="snipcart-add-item btn-primary w-full py-3 rounded-lg text-white font-semibold transition-all hover:shadow-lg"
-                                data-item-id="luxury-cotton-bedding"
-                                data-item-price="149"
-                                data-item-description="Premium 100% organic cotton bedding set"
-                                data-item-image="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                                data-item-name="Luxury Cotton Bedding Set">
-                            Add to Cart
-                        </button>
                     </div>
                 </div>
-
-                <!-- Product 2 -->
-                <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Memory Foam Mattress" 
-                             class="w-full h-64 object-cover transition-transform duration-300 hover:scale-110">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">Hot</span>
+                <div data-aos="fade-left">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-6">Our Story</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Founded in 1970, PureSalt Industries began as a small family business with a vision to provide the highest quality salt products to Pakistan and beyond. Today, we stand as the country's leading salt manufacturer, serving diverse industries from food processing to pharmaceuticals.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Our commitment to excellence, sustainable practices, and customer satisfaction has earned us ISO certifications and the trust of over 1000 satisfied clients worldwide.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-gray-900 mb-1">1970 - Company Founded</h4>
+                            <p class="text-gray-600">Started as a small salt processing unit in Rawalpindi</p>
                         </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Memory Foam Mattress</h3>
-                        <p class="text-gray-600 mb-4">12-inch gel-infused memory foam mattress with cooling technology and medium-firm support.</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-2xl font-bold text-blue-600">$699</span>
-                            <div class="flex items-center text-yellow-400">
-                                <span class="mr-1">⭐⭐⭐⭐⭐</span>
-                                <span class="text-gray-600 text-sm">(189)</span>
-                            </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-gray-900 mb-1">1985 - First Export</h4>
+                            <p class="text-gray-600">Began exporting to Middle East markets</p>
                         </div>
-                        <button class="snipcart-add-item btn-primary w-full py-3 rounded-lg text-white font-semibold transition-all hover:shadow-lg"
-                                data-item-id="memory-foam-mattress"
-                                data-item-price="699"
-                                data-item-description="12-inch gel-infused memory foam mattress"
-                                data-item-image="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                                data-item-name="Memory Foam Mattress">
-                            Add to Cart
-                        </button>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-gray-900 mb-1">2000 - ISO Certification</h4>
+                            <p class="text-gray-600">Achieved ISO 9001:2015 quality certification</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4 class="font-bold text-gray-900 mb-1">2020 - Modern Facility</h4>
+                            <p class="text-gray-600">Opened state-of-the-art manufacturing plant</p>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Product 3 -->
-                <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Bamboo Pillow Set" 
-                             class="w-full h-64 object-cover transition-transform duration-300 hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Bamboo Pillow Set</h3>
-                        <p class="text-gray-600 mb-4">Hypoallergenic bamboo fiber pillows with adjustable fill. Set of 2 standard size pillows.</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-2xl font-bold text-blue-600">$89</span>
-                            <div class="flex items-center text-yellow-400">
-                                <span class="mr-1">⭐⭐⭐⭐⭐</span>
-                                <span class="text-gray-600 text-sm">(156)</span>
-                            </div>
-                        </div>
-                        <button class="snipcart-add-item btn-primary w-full py-3 rounded-lg text-white font-semibold transition-all hover:shadow-lg"
-                                data-item-id="bamboo-pillow-set"
-                                data-item-price="89"
-                                data-item-description="Hypoallergenic bamboo fiber pillows set of 2"
-                                data-item-image="https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                                data-item-name="Bamboo Pillow Set">
-                            Add to Cart
-                        </button>
-                    </div>
+            <!-- Mission, Vision, Values -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
+                <div class="text-center p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl">
+                    <i class="fas fa-bullseye text-primary text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                    <p class="text-gray-600">To provide premium quality salt products that exceed customer expectations while maintaining sustainable and ethical business practices.</p>
                 </div>
-
-                <!-- Product 4 -->
-                <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Down Alternative Comforter" 
-                             class="w-full h-64 object-cover transition-transform duration-300 hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Down Alternative Comforter</h3>
-                        <p class="text-gray-600 mb-4">All-season down alternative comforter with microfiber fill. Machine washable and hypoallergenic.</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-2xl font-bold text-blue-600">$119</span>
-                            <div class="flex items-center text-yellow-400">
-                                <span class="mr-1">⭐⭐⭐⭐☆</span>
-                                <span class="text-gray-600 text-sm">(203)</span>
-                            </div>
-                        </div>
-                        <button class="snipcart-add-item btn-primary w-full py-3 rounded-lg text-white font-semibold transition-all hover:shadow-lg"
-                                data-item-id="down-alternative-comforter"
-                                data-item-price="119"
-                                data-item-description="All-season down alternative comforter"
-                                data-item-image="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                                data-item-name="Down Alternative Comforter">
-                            Add to Cart
-                        </button>
-                    </div>
+                <div class="text-center p-8 bg-gradient-to-br from-orange-50 to-orange-100 rounded-3xl">
+                    <i class="fas fa-eye text-accent text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
+                    <p class="text-gray-600">To be the leading salt manufacturer in South Asia, recognized for innovation, quality, and customer satisfaction.</p>
                 </div>
-
-                <!-- Product 5 -->
-                <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Silk Pillowcase Set" 
-                             class="w-full h-64 object-cover transition-transform duration-300 hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Silk Pillowcase Set</h3>
-                        <p class="text-gray-600 mb-4">100% mulberry silk pillowcases with hidden zipper closure. Gentle on hair and skin.</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-2xl font-bold text-blue-600">$69</span>
-                            <div class="flex items-center text-yellow-400">
-                                <span class="mr-1">⭐⭐⭐⭐☆</span>
-                                <span class="text-gray-600 text-sm">(74)</span>
-                            </div>
-                        </div>
-                        <button class="snipcart-add-item btn-primary w-full py-3 rounded-lg text-white font-semibold transition-all hover:shadow-lg"
-                                data-item-id="silk-pillowcase-set"
-                                data-item-price="69"
-                                data-item-description="100% mulberry silk pillowcases set of 2"
-                                data-item-image="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                                data-item-name="Silk Pillowcase Set">
-                            Add to Cart
-                        </button>
-                    </div>
+                <div class="text-center p-8 bg-gradient-to-br from-green-50 to-green-100 rounded-3xl">
+                    <i class="fas fa-heart text-green-600 text-4xl mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Our Values</h3>
+                    <p class="text-gray-600">Quality, integrity, sustainability, and customer-centricity are the core values that guide every aspect of our business.</p>
                 </div>
-
-                <!-- Product 6 -->
-                <div class="product-card bg-white rounded-2xl shadow-lg overflow-hidden">
-                    <div class="relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                             alt="Weighted Blanket" 
-                             class="w-full h-64 object-cover transition-transform duration-300 hover:scale-110">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Weighted Blanket</h3>
-                        <p class="text-gray-600 mb-4">15-pound weighted blanket with glass beads and soft cotton cover. Promotes better sleep and relaxation.</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="text-2xl font-bold text-blue-600">$129</span>
-                            <div class="flex items-center text-yellow-400">
-                                <span class="mr-1">⭐⭐⭐⭐⭐</span>
-                                <span class="text-gray-600 text-sm">(91)</span>
-                            </div>
-                        </div>
-                        <button class="snipcart-add-item btn-primary w-full py-3 rounded-lg text-white font-semibold transition-all hover:shadow-lg"
-                                data-item-id="weighted-blanket"
-                                data-item-price="129"
-                                data-item-description="15-pound weighted blanket with glass beads"
-                                data-item-image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-                                data-item-name="Weighted Blanket">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>110">
-                    </div>
-                   
-                     
-                        </div>
-                      
+            </div>
+        </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">Why BedZone?</h2>
-                <p class="text-xl text-gray-600">We provide exceptional service and quality products you can trust.</p>
+    <!-- Products Section -->
+    <section id="products" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6">Our Premium Products</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive range of high-quality salt products for every industry and application, manufactured to international standards.
+                </p>
+            </div>
+
+            <!-- Product Categories Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up">
+                <button onclick="filterProducts('all')" class="filter-btn active bg-primary text-white px-6 py-3 rounded-full">All Products</button>
+                <button onclick="filterProducts('industrial')" class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-full border">Industrial</button>
+                <button onclick="filterProducts('food')" class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-full border">Food Grade</button>
+                <button onclick="filterProducts('pharmaceutical')" class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-full border">Pharmaceutical</button>
+                <button onclick="filterProducts('specialty')" class="filter-btn bg-white text-gray-700 px-6 py-3 rounded-full border">Specialty</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div id="productGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6">Our Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Complete salt solutions from manufacturing to delivery, with expert consultation and support services.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-white rounded-3xl shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-cogs text-primary text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Custom Manufacturing</h3>
+                    <p class="text-gray-600 mb-6">Tailored salt products manufactured to your exact specifications and requirements.</p>
+                    <ul class="text-left space-y-2 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Custom grain sizes</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Specialized packaging</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Private labeling</li>
+                    </ul>
+                </div>
+
+                <div class="card-hover bg-white rounded-3xl shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-orange-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-flask text-accent text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Quality Testing</h3>
+                    <p class="text-gray-600 mb-6">Comprehensive laboratory testing ensuring highest quality standards for every batch.</p>
+                    <ul class="text-left space-y-2 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Purity analysis</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Chemical composition</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Certified reports</li>
+                    </ul>
+                </div>
+
+                <div class="card-hover bg-white rounded-3xl shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-shipping-fast text-green-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Logistics & Delivery</h3>
+                    <p class="text-gray-600 mb-6">Reliable nationwide delivery network with international shipping capabilities.</p>
+                    <ul class="text-left space-y-2 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Door-to-door delivery</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Bulk transport</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Export services</li>
+                    </ul>
+                </div>
+
+                <div class="card-hover bg-white rounded-3xl shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-purple-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Technical Consultation</h3>
+                    <p class="text-gray-600 mb-6">Expert guidance on salt applications, processing, and optimization for your industry.</p>
+                    <ul class="text-left space-y-2 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Process optimization</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Application guidance</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Technical support</li>
+                    </ul>
+                </div>
+
+                <div class="card-hover bg-white rounded-3xl shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-certificate text-red-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Certification Support</h3>
+                    <p class="text-gray-600 mb-6">Complete documentation and certification assistance for regulatory compliance.</p>
+                    <ul class="text-left space-y-2 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> ISO documentation</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Export certificates</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Quality assurance</li>
+                    </ul>
+                </div>
+
+                <div class="card-hover bg-white rounded-3xl shadow-lg p-8 text-center" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bg-yellow-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-headset text-yellow-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">24/7 Customer Support</h3>
+                    <p class="text-gray-600 mb-6">Round-the-clock customer service and technical support for all your needs.</p>
+                    <ul class="text-left space-y-2 text-gray-600">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Phone support</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> WhatsApp chat</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i> Emergency response</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6">Manufacturing Gallery</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Take a virtual tour of our state-of-the-art manufacturing facility and quality control processes.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item aspect-square bg-gray-200 rounded-2xl" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-industry text-4xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-square bg-gray-200 rounded-2xl" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-cogs text-4xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-square bg-gray-200 rounded-2xl" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-flask text-4xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-square bg-gray-200 rounded-2xl" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-truck text-4xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-square bg-gray-200 rounded-2xl" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-warehouse text-4xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-square bg-gray-200 rounded-2xl" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-certificate text-4xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-square bg-gray-200 rounded-2xl" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-users text-4xl"></i>
+                    </div>
+                </div>
+                <div class="gallery-item aspect-square bg-gray-200 rounded-2xl" data-aos="zoom-in" data-aos-delay="800">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus text-white text-3xl"></i>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-globe text-4xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6">Our Leadership Team</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Meet the experienced professionals driving innovation and excellence in Pakistan's salt industry.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="team-card bg-gray-200 rounded-3xl h-96 relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-overlay">
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Ahmed Hassan</h3>
+                            <p class="text-lg mb-2">Chief Executive Officer</p>
+                            <p class="text-sm opacity-90">Leading the company with 25+ years of industry experience.</p>
+                            <div class="flex space-x-3 mt-4">
+                                <a href="#" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <i class="fab fa-linkedin text-sm"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-user-tie text-6xl"></i>
+                    </div>
+                </div>
+
+                <div class="team-card bg-gray-200 rounded-3xl h-96 relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-overlay">
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Dr. Sarah Khan</h3>
+                            <p class="text-lg mb-2">Chief Technology Officer</p>
+                            <p class="text-sm opacity-90">PhD in Chemical Engineering, innovating salt processing technologies.</p>
+                            <div class="flex space-x-3 mt-4">
+                                <a href="#" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <i class="fab fa-linkedin text-sm"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-user-graduate text-6xl"></i>
+                    </div>
+                </div>
+
+                <div class="team-card bg-gray-200 rounded-3xl h-96 relative" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-overlay">
+                        <div class="absolute bottom-6 left-6 right-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Mohammad Ali</h3>
+                            <p class="text-lg mb-2">Operations Director</p>
+                            <p class="text-sm opacity-90">Ensuring seamless production and quality control processes.</p>
+                            <div class="flex space-x-3 mt-4">
+                                <a href="#" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <i class="fab fa-linkedin text-sm"></i>
+                                </a>
+                                <a href="#" class="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-envelope text-sm"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full h-full flex items-center justify-center text-gray-400">
+                        <i class="fas fa-hard-hat text-6xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold mb-6">Client Testimonials</h2>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto">
+                    Hear what our valued clients say about our products and services.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">Fatima Industries</h4>
+                            <p class="text-gray-600 text-sm">Food Processing Company</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">"PureSalt has been our trusted partner for over 10 years. Their food-grade salt consistently meets our stringent quality requirements, and their delivery is always on time."</p>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-building text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">ChemTech Solutions</h4>
+                            <p class="text-gray-600 text-sm">Chemical Manufacturing</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">"The purity levels of their industrial salt are exceptional. PureSalt's technical support team helped us optimize our processes, resulting in significant cost savings."</p>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-hospital text-gray-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">MediCorp Pharmaceuticals</h4>
+                            <p class="text-gray-600 text-sm">Pharmaceutical Company</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600 italic">"Their pharmaceutical-grade salt meets all international standards. The documentation and certification support has been invaluable for our regulatory compliance."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6">Get In Touch</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to discuss your salt requirements? Our team is here to help you find the perfect solution.
+                </p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 hover:shadow-lg transition-shadow">
-                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
-                        <span class="text-2xl">🚚</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Info -->
+                <div data-aos="fade-right">
+                    <div class="bg-white rounded-3xl p-8 shadow-lg mb-8">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-1">Head Office</h4>
+                                    <p class="text-gray-600">Plot 15, Industrial Zone<br>Rawalpindi, Punjab, Pakistan</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-phone text-green-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-1">Phone Numbers</h4>
+                                    <p class="text-gray-600">Office: +92 51 123-4567<br>Sales: +92 300 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-envelope text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-1">Email Addresses</h4>
+                                    <p class="text-gray-600">info@puresalt.pk<br>sales@puresalt.pk</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-clock text-purple-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 mb-1">Business Hours</h4>
+                                    <p class="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Free Shipping</h3>
-                    <p class="text-gray-600">Free shipping on all orders over $100. Fast and reliable delivery worldwide.</p>
+                    
+                    <!-- Quick Action Buttons -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <button onclick="callNow()" class="bg-blue-600 text-white px-6 py-4 rounded-2xl hover:bg-blue-700 transition-colors flex flex-col items-center space-y-2">
+                            <i class="fas fa-phone text-2xl"></i>
+                            <span class="font-semibold">Call Now</span>
+                        </button>
+                        
+                        <button onclick="whatsappChat()" class="bg-green-500 text-white px-6 py-4 rounded-2xl hover:bg-green-600 transition-colors flex flex-col items-center space-y-2">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                            <span class="font-semibold">WhatsApp</span>
+                        </button>
+                        
+                        <button onclick="showBookingForm()" class="bg-accent text-white px-6 py-4 rounded-2xl hover:bg-accent-dark transition-colors flex flex-col items-center space-y-2">
+                            <i class="fas fa-calendar-plus text-2xl"></i>
+                            <span class="font-semibold">Book Call</span>
+                        </button>
+                    </div>
                 </div>
                 
-                <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-green-50 to-blue-50 hover:shadow-lg transition-shadow">
-                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-green-500 to-blue-600 rounded-2xl flex items-center justify-center">
-                        <span class="text-2xl">🛡️</span>
+                <!-- Contact Form -->
+                <div data-aos="fade-left">
+                    <div class="bg-white rounded-3xl shadow-lg p-8">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8">Send Us a Message</h3>
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <input type="text" name="firstName" placeholder="First Name" required 
+                                       class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                                <input type="text" name="lastName" placeholder="Last Name" required 
+                                       class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <input type="email" name="email" placeholder="Email Address" required 
+                                       class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                                <input type="tel" name="phone" placeholder="Phone Number" required 
+                                       class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                            </div>
+                            <input type="text" name="company" placeholder="Company Name (Optional)" 
+                                   class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                            <select name="productInterest" required 
+                                    class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                                <option value="">Select Product Interest</option>
+                                <option value="industrial">Industrial Grade Salt</option>
+                                <option value="food">Food Grade Sea Salt</option>
+                                <option value="rock">Rock Salt (Halite)</option>
+                                <option value="pharmaceutical">Pharmaceutical Grade</option>
+                                <option value="pool">Pool & Spa Salt</option>
+                                <option value="softener">Water Softener Salt</option>
+                                <option value="custom">Custom Requirements</option>
+                            </select>
+                            <textarea name="message" placeholder="Tell us about your requirements..." rows="4" required 
+                                      class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20 resize-none"></textarea>
+                            <button type="submit" class="w-full btn-primary text-lg py-4">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+                        </form>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">2-Year Warranty</h3>
-                    <p class="text-gray-600">Comprehensive warranty coverage on all products with 24/7 customer support.</p>
-                </div>
-                
-                <div class="text-center p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-pink-50 hover:shadow-lg transition-shadow">
-                    <div class="w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center">
-                        <span class="text-2xl">⚡</span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Expert Support</h3>
-                    <p class="text-gray-600">Get help from our tech experts before and after your purchase.</p>
                 </div>
             </div>
         </div>
@@ -374,337 +928,688 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="col-span-1 md:col-span-2">
-                    <h3 class="text-2xl font-bold gradient-bg bg-clip-text text-transparent mb-4">BedZone</h3>
-                    <p class="text-gray-400 mb-6 max-w-md">Your trusted partner for premium Bedding. Experience the future today.</p>
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <div class="logo mb-6">
+                        <div class="logo-icon">PS</div>
+                        <div>
+                            <div class="text-2xl font-bold">PureSalt Industries</div>
+                            <div class="text-sm text-gray-400">Premium Salt Manufacturing Since 1970</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 mb-6 leading-relaxed max-w-md">
+                        Pakistan's leading salt manufacturer, committed to delivering premium quality products with sustainable practices and exceptional customer service.
+                    </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                            <span class="text-lg">📧</span>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                            <span class="text-lg">📱</span>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors">
-                            <span class="text-lg">🐦</span>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fab fa-instagram"></i>
                         </a>
                     </div>
                 </div>
                 
+                <!-- Quick Links -->
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#products" class="hover:text-white transition-colors">Products</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Support</a></li>
+                    <h4 class="text-xl font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 
+                <!-- Contact Info -->
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Customer Service</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Shipping Info</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Returns</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
-                    </ul>
+                    <h4 class="text-xl font-bold mb-6">Contact Info</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt text-accent mt-1 flex-shrink-0"></i>
+                            <div>
+                                <p class="text-gray-400 text-sm">Plot 15, Industrial Zone</p>
+                                <p class="text-gray-400 text-sm">Rawalpindi, Punjab, Pakistan</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone text-accent flex-shrink-0"></i>
+                            <p class="text-gray-400 text-sm">+92 51 123-4567</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope text-accent flex-shrink-0"></i>
+                            <p class="text-gray-400 text-sm">info@puresalt.pk</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fab fa-whatsapp text-accent flex-shrink-0"></i>
+                            <p class="text-gray-400 text-sm">+92 300 123-4567</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2025 BedZone. All rights reserved. | Powered by INTELLEX</p>
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 PureSalt Industries. All rights reserved. | ISO 9001:2015 Certified | Made in Pakistan
+                </p>
+                <div class="flex space-x-6 text-sm">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Sitemap</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Snipcart JavaScript -->
-    <script async src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"></script>
-    <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY" data-config-modal-style="side"></div>
+    <!-- Booking Form Modal -->
+    <div id="bookingModal" class="fixed inset-0 bg-black bg-opacity-50 modal-overlay hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-4xl font-display font-bold text-gray-900">Book Consultation</h2>
+                    <button id="closeBookingModal" class="text-gray-400 hover:text-gray-600 text-3xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <form id="bookingForm" class="space-y-8">
+                    <!-- Personal Information -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900">Personal Information</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <input type="text" name="firstName" placeholder="First Name" required 
+                                   class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                            <input type="text" name="lastName" placeholder="Last Name" required 
+                                   class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+                            <input type="email" name="email" placeholder="Email Address" required 
+                                   class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                            <input type="tel" name="phone" placeholder="Phone Number" required 
+                                   class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                        </div>
+                    </div>
+                    
+                    <!-- Business Information -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900">Business Information</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <input type="text" name="company" placeholder="Company Name" 
+                                   class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                            <select name="businessType" required 
+                                    class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                                <option value="">Business Type</option>
+                                <option value="manufacturer">Manufacturer</option>
+                                <option value="distributor">Distributor</option>
+                                <option value="retailer">Retailer</option>
+                                <option value="restaurant">Restaurant/Food Service</option>
+                                <option value="chemical">Chemical Industry</option>
+                                <option value="pharmaceutical">Pharmaceutical</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <input type="text" name="address" placeholder="Business Address" 
+                               class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20 mt-6">
+                    </div>
+                    
+                    <!-- Consultation Details -->
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900">Consultation Details</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <select name="productInterest" required 
+                                    class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                                <option value="">Product of Interest</option>
+                                <option value="industrial">Industrial Grade Salt</option>
+                                <option value="food">Food Grade Sea Salt</option>
+                                <option value="rock">Rock Salt (Halite)</option>
+                                <option value="pharmaceutical">Pharmaceutical Grade</option>
+                                <option value="pool">Pool & Spa Salt</option>
+                                <option value="softener">Water Softener Salt</option>
+                                <option value="multiple">Multiple Products</option>
+                            </select>
+                            <select name="consultationType" required 
+                                    class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                                <option value="">Consultation Type</option>
+                                <option value="phone">Phone Call</option>
+                                <option value="video">Video Call</option>
+                                <option value="inperson">In-Person Meeting</option>
+                                <option value="facility">Facility Visit</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6">
+                            <input type="date" name="preferredDate" required 
+                                   class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                            <select name="preferredTime" required 
+                                    class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20">
+                                <option value="">Preferred Time</option>
+                                <option value="9-11">9:00 AM - 11:00 AM</option>
+                                <option value="11-13">11:00 AM - 1:00 PM</option>
+                                <option value="14-16">2:00 PM - 4:00 PM</option>
+                                <option value="16-18">4:00 PM - 6:00 PM</option>
+                            </select>
+                        </div>
+                        <textarea name="requirements" placeholder="Tell us about your requirements, quantity needed, and any specific questions..." rows="4" 
+                                  class="w-full px-4 py-4 border border-gray-200 rounded-xl focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-20 resize-none mt-6"></textarea>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <button type="button" onclick="closeBookingForm()" 
+                                class="flex-1 px-6 py-4 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors font-semibold">
+                            Cancel
+                        </button>
+                        <button type="submit" class="flex-1 btn-primary text-lg py-4">
+                            <i class="fas fa-calendar-check mr-2"></i> Book Consultation
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <!-- Custom JavaScript -->
+    <!-- Product Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 modal-overlay hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-4xl font-display font-bold text-gray-900" id="modalTitle"></h2>
+                    <button id="closeModal" class="text-gray-400 hover:text-gray-600 text-3xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <div class="product-image rounded-3xl h-80 mb-6" id="modalImage">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Specifications</h3>
+                            <div id="modalSpecs" class="space-y-3">
+                                <!-- Specifications will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <p class="text-gray-600 text-lg mb-8 leading-relaxed" id="modalDescription"></p>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Available Packages & Pricing</h3>
+                            <div id="modalVariations" class="space-y-4">
+                                <!-- Variations will be loaded here -->
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <button onclick="showBookingForm()" class="btn-primary text-center py-4">
+                                <i class="fas fa-phone mr-2"></i> Request Quote
+                            </button>
+                            <button onclick="whatsappChat()" class="bg-green-500 text-white px-6 py-4 rounded-xl hover:bg-green-600 transition-colors font-semibold">
+                                <i class="fab fa-whatsapp mr-2"></i> WhatsApp Inquiry
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <button onclick="whatsappChat()" class="floating-btn whatsapp-btn" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp text-white text-2xl"></i>
+        </button>
+        <button onclick="callNow()" class="floating-btn call-btn" title="Call Now">
+            <i class="fas fa-phone text-white text-xl"></i>
+        </button>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Product data with Pakistani pricing
+        const products = [
+            {
+                id: 1,
+                name: "Industrial Grade Salt",
+                category: "industrial",
+                shortDescription: "High-purity salt for industrial applications and chemical processing.",
+                fullDescription: "Our industrial grade salt meets the highest standards for chemical processing, water treatment, and manufacturing applications. Produced with advanced purification methods to ensure consistent quality and minimal impurities. Perfect for chlor-alkali processes, textile dyeing, and chemical synthesis.",
+                specifications: [
+                    "Purity: 99.5% NaCl minimum",
+                    "Moisture Content: <0.1%",
+                    "Particle Size: 0.2-2.5mm",
+                    "Color: Pure white crystalline",
+                    "Heavy Metals: <10ppm",
+                    "Insoluble Matter: <0.05%"
+                ],
+                variations: [
+                    { package: "25kg Bags", price: "PKR 4,500", quality: "Standard Grade" },
+                    { package: "50kg Bags", price: "PKR 8,200", quality: "Standard Grade" },
+                    { package: "500kg Jumbo Bags", price: "PKR 75,000", quality: "Premium Grade" },
+                    { package: "1000kg Bulk", price: "PKR 145,000", quality: "Premium Grade" },
+                    { package: "Custom Packaging", price: "Contact for Quote", quality: "All Grades" }
+                ]
+            },
+            {
+                id: 2,
+                name: "Food Grade Sea Salt",
+                category: "food",
+                shortDescription: "Premium sea salt perfect for culinary applications and food processing.",
+                fullDescription: "Harvested from pristine coastal waters and processed to meet strict food safety standards. This sea salt retains natural minerals while providing the pure taste professional chefs demand. Ideal for food processing, restaurants, and gourmet cooking applications.",
+                specifications: [
+                    "Food Grade Certified (HACCP)",
+                    "Natural mineral content preserved",
+                    "Low sodium variant available",
+                    "Organic certification available",
+                    "Microbiological testing completed",
+                    "Free from anti-caking agents"
+                ],
+                variations: [
+                    { package: "1kg Food Containers", price: "PKR 850", quality: "Fine Grade" },
+                    { package: "5kg Restaurant Bags", price: "PKR 3,800", quality: "Fine Grade" },
+                    { package: "25kg Commercial Bags", price: "PKR 16,500", quality: "Coarse Grade" },
+                    { package: "100kg Industrial Bags", price: "PKR 62,000", quality: "Processing Grade" },
+                    { package: "Bulk Orders (1000kg+)", price: "Contact for Quote", quality: "Custom Grade" }
+                ]
+            },
+            {
+                id: 3,
+                name: "Rock Salt (Halite)",
+                category: "industrial",
+                shortDescription: "Natural rock salt ideal for de-icing and water softening applications.",
+                fullDescription: "Mined from ancient salt deposits, our rock salt provides excellent de-icing properties for winter road maintenance and effective water softening for residential and commercial systems. Available in multiple grades for different applications from road salt to water treatment.",
+                specifications: [
+                    "Natural halite crystal structure",
+                    "Multiple grain sizes available",
+                    "Low residue formula",
+                    "Weather resistant properties",
+                    "Effective to -15°C",
+                    "Environmentally safe"
+                ],
+                variations: [
+                    { package: "20kg Road Salt Bags", price: "PKR 3,200", quality: "Road Grade" },
+                    { package: "40kg Heavy Duty Bags", price: "PKR 5,800", quality: "Road Grade" },
+                    { package: "500kg Pallet Bags", price: "PKR 65,000", quality: "Industrial Grade" },
+                    { package: "1000kg Bulk Pallets", price: "PKR 125,000", quality: "Industrial Grade" },
+                    { package: "Truck Loads (20MT+)", price: "Contact for Quote", quality: "Bulk Grade" }
+                ]
+            },
+            {
+                id: 4,
+                name: "Pharmaceutical Grade Salt",
+                category: "pharmaceutical",
+                shortDescription: "Ultra-pure salt meeting stringent pharmaceutical industry standards.",
+                fullDescription: "Manufactured under strict pharmaceutical guidelines with complete traceability and documentation. This ultra-pure salt is suitable for medical device manufacturing, pharmaceutical formulations, laboratory applications, and IV solutions. Meets USP, EP, and BP standards.",
+                specifications: [
+                    "USP/EP/BP compliance certified",
+                    "Purity: 99.9%+ NaCl",
+                    "Heavy metals: <5ppm",
+                    "Bacterial endotoxins: <0.5 EU/ml",
+                    "Complete certificate of analysis",
+                    "GMP facility manufactured"
+                ],
+                variations: [
+                    { package: "1kg Sealed Units", price: "PKR 12,500", quality: "USP Grade" },
+                    { package: "5kg Lab Containers", price: "PKR 55,000", quality: "USP Grade" },
+                    { package: "25kg Pharma Drums", price: "PKR 245,000", quality: "EP Grade" },
+                    { package: "100kg Bulk Drums", price: "PKR 950,000", quality: "BP Grade" },
+                    { package: "Custom Packaging", price: "Contact for Quote", quality: "All Grades Available" }
+                ]
+            },
+            {
+                id: 5,
+                name: "Pool & Spa Salt",
+                category: "specialty",
+                shortDescription: "Specially formulated salt for swimming pools and spa systems.",
+                fullDescription: "Our pool and spa salt is designed specifically for chlorine generation systems. It dissolves completely, leaves no residue, and helps maintain perfect water balance for crystal clear pools and spas. Compatible with all major salt water pool systems and equipment.",
+                specifications: [
+                    "99.8% pure sodium chloride",
+                    "No anti-caking agents added",
+                    "Quick dissolving formula",
+                    "Pool equipment safe composition",
+                    "pH neutral properties",
+                    "Low calcium content"
+                ],
+                variations: [
+                    { package: "18kg Pool Bags", price: "PKR 4,200", quality: "Standard Pool Grade" },
+                    { package: "40kg Premium Bags", price: "PKR 8,900", quality: "Premium Pool Grade" },
+                    { package: "Pallet (40 x 18kg)", price: "PKR 160,000", quality: "Commercial Grade" },
+                    { package: "Bulk Pool Salt (1000kg)", price: "PKR 320,000", quality: "Commercial Grade" },
+                    { package: "Truck Delivery Service", price: "Contact for Quote", quality: "Commercial Grade" }
+                ]
+            },
+            {
+                id: 6,
+                name: "Water Softener Salt",
+                category: "specialty",
+                shortDescription: "High-efficiency salt tablets for residential and commercial water softeners.",
+                fullDescription: "Compressed salt tablets designed for optimal performance in water softening systems. These high-density tablets minimize bridging, reduce maintenance, and extend the life of your water softener equipment. Available in multiple formats for different system types.",
+                specifications: [
+                    "High-density compressed tablets",
+                    "Anti-bridging formula",
+                    "Low insoluble content (<0.5%)",
+                    "Extended system life guaranteed",
+                    "Uniform tablet size",
+                    "Reduced maintenance requirements"
+                ],
+                variations: [
+                    { package: "25kg Tablet Bags", price: "PKR 4,800", quality: "Standard Tablets" },
+                    { package: "40kg Premium Bags", price: "PKR 7,500", quality: "Premium Tablets" },
+                    { package: "500kg Commercial Pallets", price: "PKR 92,000", quality: "Commercial Grade" },
+                    { package: "1000kg Bulk Pallets", price: "PKR 185,000", quality: "Industrial Grade" },
+                    { package: "Block Salt (4kg blocks)", price: "PKR 950/block", quality: "Compact Blocks" }
+                ]
+            },
+            {
+                id: 7,
+                name: "Himalayan Pink Salt",
+                category: "food",
+                shortDescription: "Premium pink salt from the Khewra mines with natural minerals.",
+                fullDescription: "Authentic Himalayan pink salt mined from the famous Khewra Salt Mine. This natural rock salt contains 84 trace minerals and elements, giving it its distinctive pink color and unique flavor profile. Perfect for gourmet cooking, finishing dishes, and health-conscious consumers.",
+                specifications: [
+                    "100% natural Himalayan origin",
+                    "84 trace minerals and elements",
+                    "Natural pink coloration",
+                    "No artificial additives",
+                    "Hand-mined and selected",
+                    "Multiple grain sizes available"
+                ],
+                variations: [
+                    { package: "500g Retail Packs", price: "PKR 450", quality: "Fine Ground" },
+                    { package: "2kg Kitchen Containers", price: "PKR 1,600", quality: "Coarse Ground" },
+                    { package: "10kg Restaurant Bags", price: "PKR 7,200", quality: "Mixed Grades" },
+                    { package: "50kg Wholesale Bags", price: "PKR 32,500", quality: "Bulk Grade" },
+                    { package: "Salt Lamps & Blocks", price: "PKR 2,500-15,000", quality: "Decorative Grade" }
+                ]
+            },
+            {
+                id: 8,
+                name: "Vacuum Evaporated Salt",
+                category: "pharmaceutical",
+                shortDescription: "Ultra-pure salt produced through vacuum evaporation process.",
+                fullDescription: "Highest purity salt produced using advanced vacuum evaporation technology. This process ensures removal of all impurities and contaminants, making it suitable for the most demanding pharmaceutical, electronic, and laboratory applications. Consistently meets international purity standards.",
+                specifications: [
+                    "Purity: 99.99% NaCl minimum",
+                    "Vacuum evaporation process",
+                    "Pharmaceutical grade quality",
+                    "Low heavy metal content",
+                    "Consistent crystal structure",
+                    "Trace element controlled"
+                ],
+                variations: [
+                    { package: "500g Lab Bottles", price: "PKR 8,500", quality: "Analytical Grade" },
+                    { package: "2kg Pharma Containers", price: "PKR 28,000", quality: "Pharmaceutical Grade" },
+                    { package: "10kg Special Packs", price: "PKR 125,000", quality: "Electronic Grade" },
+                    { package: "50kg Industrial Drums", price: "PKR 575,000", quality: "Industrial Grade" },
+                    { package: "Custom Specifications", price: "Contact for Quote", quality: "Made to Order" }
+                ]
+            }
+        ];
+
+        // DOM Elements
+        const navbar = document.getElementById('navbar');
+        const productGrid = document.getElementById('productGrid');
+        const modal = document.getElementById('productModal');
+        const bookingModal = document.getElementById('bookingModal');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const openMobileMenuBtn = document.getElementById('openMobileMenu');
+        const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+        
+        // Mobile menu functions
+        openMobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+        
+        closeMobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('navbar-scroll');
+            } else {
+                navbar.classList.remove('navbar-scroll');
+            }
+        });
+
+        // Communication functions
+        function callNow() {
+            window.location.href = 'tel:+92511234567';
+        }
+
+        function whatsappChat() {
+            const message = encodeURIComponent("Hi! I'm interested in your premium salt products. Can you please provide more information and pricing?");
+            window.open(`https://wa.me/923001234567?text=${message}`, '_blank');
+        }
+
+        // Booking form functions
+        function showBookingForm() {
+            bookingModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBookingForm() {
+            bookingModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Navigation functions
+        function scrollToProducts() {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Product filtering
+        function filterProducts(category) {
+            const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
+            generateProductCards(filteredProducts);
+            
+            // Update filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-primary', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
+            event.target.classList.add('active', 'bg-primary', 'text-white');
+            event.target.classList.remove('bg-white', 'text-gray-700');
+        }
+
+        // Generate product cards
+        function generateProductCards(productsToShow = products) {
+            productGrid.innerHTML = productsToShow.map((product, index) => `
+                <div class="card-hover bg-white rounded-3xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="${(index % 3) * 100}">
+                    <div class="product-image h-64">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-${getCategoryColor(product.category)}-100 text-${getCategoryColor(product.category)}-800 px-3 py-1 rounded-full text-sm font-semibold">
+                                ${getCategoryName(product.category)}
+                            </span>
+                            <span class="text-2xl font-bold text-accent">${product.variations[0].price}</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">${product.name}</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">${product.shortDescription}</p>
+                        <div class="flex gap-3">
+                            <button onclick="openModal(${product.id})" class="flex-1 btn-primary">
+                                <i class="fas fa-info-circle mr-2"></i> Learn More
+                            </button>
+                            <button onclick="whatsappChat()" class="px-4 py-3 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getCategoryColor(category) {
+            const colors = {
+                'industrial': 'blue',
+                'food': 'green',
+                'pharmaceutical': 'purple',
+                'specialty': 'orange'
+            };
+            return colors[category] || 'gray';
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'industrial': 'Industrial',
+                'food': 'Food Grade',
+                'pharmaceutical': 'Pharmaceutical',
+                'specialty': 'Specialty'
+            };
+            return names[category] || 'General';
+        }
+
+        // Open product modal
+        function openModal(productId) {
+            const product = products.find(p => p.id===1);
+            if (!product) return;
+
+            document.getElementById('modalTitle').textContent = product.name;
+           document.getElementById('modalImage').innerHTML = `
+                <img src="assets/1.jpg" alt="${product.name}" class="w-full h-full object-cover rounded-2xl" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="w-full h-full flex items-center justify-center text-gray-400 text-6xl" style="display: none;">
+                    <i class="fas fa-cube"></i>
+                </div>
+            `;
+            document.getElementById('modalDescription').textContent = product.fullDescription;
+
+            document.getElementById('modalSpecs').innerHTML = product.specifications.map(spec => `
+                <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-xl">
+                    <i class="fas fa-check-circle text-green-500 text-lg flex-shrink-0"></i>
+                    <span class="text-gray-700">${spec}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('modalVariations').innerHTML = product.variations.map(variation => `
+                <div class="bg-gray-50 p-6 rounded-2xl flex justify-between items-center hover:bg-gray-100 transition-colors">
+                    <div>
+                        <div class="font-bold text-lg text-gray-900">${variation.package}</div>
+                        <div class="text-gray-600">${variation.quality}</div>
+                    </div>
+                    <div class="text-2xl font-bold text-accent">${variation.price}</div>
+                </div>
+            `).join('');
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modals
+        function closeModal() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event listeners
+        document.getElementById('closeModal').addEventListener('click', closeModal);
+        document.getElementById('closeBookingModal').addEventListener('click', closeBookingForm);
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        bookingModal.addEventListener('click', (e) => {
+            if (e.target === bookingModal) closeBookingForm();
+        });
+
+        // Form submissions
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Message sent successfully! We will contact you within 24 hours.');
+            this.reset();
+        });
+
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Consultation booked successfully! We will confirm your appointment via email/phone within 2 hours.');
+            closeBookingForm();
+            this.reset();
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (!modal.classList.contains('hidden')) {
+                    closeModal();
                 }
-            });
-        }, observerOptions);
-
-        // Observe product cards
-        document.querySelectorAll('.product-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Add to cart notification
-        document.addEventListener('snipcart.ready', () => {
-            Snipcart.events.on('item.added', (cartItem) => {
-                // Show success notification
-                showNotification(`${cartItem.name} added to cart!`, 'success');
-            });
-
-            Snipcart.events.on('cart.opened', () => {
-                console.log('Cart opened');
-            });
-        });
-
-        // Notification system
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-20 right-4 z-50 px-6 py-4 rounded-lg shadow-lg text-white transform translate-x-full transition-transform duration-300 ${
-                type === 'success' ? 'bg-green-500' : 'bg-blue-500'
-            }`;
-            notification.innerHTML = `
-                <div class="flex items-center">
-                    <span class="mr-2">${type === 'success' ? '✅' : 'ℹ️'}</span>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Slide in
-            setTimeout(() => {
-                notification.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Slide out and remove
-            setTimeout(() => {
-                notification.style.transform = 'translateX(full)';
-                setTimeout(() => {
-                    document.body.removeChild(notification);
-                }, 300);
-            }, 3000);
-        }
-
-        // Mobile menu toggle (if needed)
-        const mobileMenuButton = document.createElement('button');
-        mobileMenuButton.className = 'md:hidden p-2 text-gray-600';
-        mobileMenuButton.innerHTML = `
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-        `;
-
-        // Add loading states for buttons
-        document.querySelectorAll('.snipcart-add-item').forEach(button => {
-            button.addEventListener('click', function() {
-                const originalText = this.textContent;
-                this.textContent = 'Adding...';
-                this.disabled = true;
-                
-                setTimeout(() => {
-                    this.textContent = originalText;
-                    this.disabled = false;
-                }, 1000);
-            });
-        });
-
-        // Price formatting
-        function formatPrice(price) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD'
-            }).format(price);
-        }
-
-        // Product search functionality
-        function initProductSearch() {
-            const searchInput = document.createElement('input');
-            searchInput.type = 'text';
-            searchInput.placeholder = 'Search products...';
-            searchInput.className = 'hidden md:block px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500';
-            
-            const nav = document.querySelector('nav .flex');
-            if (nav) {
-                nav.insertBefore(searchInput, nav.lastElementChild);
+                if (!bookingModal.classList.contains('hidden')) {
+                    closeBookingForm();
+                }
+                if (mobileMenu.classList.contains('active')) {
+                    mobileMenu.classList.remove('active');
+                }
             }
-
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                const products = document.querySelectorAll('.product-card');
-                
-                products.forEach(product => {
-                    const productName = product.querySelector('h3').textContent.toLowerCase();
-                    const productDescription = product.querySelector('p').textContent.toLowerCase();
-                    
-                    if (productName.includes(searchTerm) || productDescription.includes(searchTerm)) {
-                        product.style.display = 'block';
-                    } else {
-                        product.style.display = searchTerm === '' ? 'block' : 'none';
-                    }
-                });
-            });
-        }
-
-        // Initialize search on page load
-        document.addEventListener('DOMContentLoaded', initProductSearch);
-
-        // Enhanced cart functionality
-        document.addEventListener('snipcart.ready', () => {
-            // Update cart count display
-            function updateCartCount() {
-                const count = Snipcart.store.getState().cart.items.count;
-                const cartCountElements = document.querySelectorAll('.snipcart-items-count');
-                cartCountElements.forEach(element => {
-                    element.textContent = count;
-                    element.style.display = count > 0 ? 'flex' : 'none';
-                });
-            }
-
-            // Listen for cart changes
-            Snipcart.events.on('cart.items.changed', updateCartCount);
-            
-            // Initial cart count update
-            updateCartCount();
         });
 
-        // Scroll to top button
-        const scrollToTopButton = document.createElement('button');
-        scrollToTopButton.className = 'fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-110 z-40';
-        scrollToTopButton.innerHTML = '↑';
-        scrollToTopButton.style.display = 'none';
-        document.body.appendChild(scrollToTopButton);
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            generateProductCards();
+            
+            // Set minimum date for booking form
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.querySelector('input[name="preferredDate"]');
+            if (dateInput) {
+                dateInput.min = today;
+            }
+        });
 
+        // Add active nav link highlighting
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopButton.style.display = 'block';
-            } else {
-                scrollToTopButton.style.display = 'none';
-            }
-        });
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
 
-        scrollToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 100;
+                const sectionId = current.getAttribute('id');
+                const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLink?.classList.add('text-primary', 'font-bold');
+                } else {
+                    navLink?.classList.remove('text-primary', 'font-bold');
+                }
             });
         });
-
-        // Product image zoom effect
-        document.querySelectorAll('.product-card img').forEach(img => {
-            img.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.1)';
-            });
-            
-            img.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-
-        // Add wishlist functionality (stored in memory)
-        let wishlist = [];
-
-        function toggleWishlist(productId, productName) {
-            const index = wishlist.findIndex(item => item.id === productId);
-            
-            if (index > -1) {
-                wishlist.splice(index, 1);
-                showNotification(`${productName} removed from wishlist`, 'info');
-            } else {
-                wishlist.push({ id: productId, name: productName });
-                showNotification(`${productName} added to wishlist`, 'success');
-            }
-            
-            updateWishlistUI();
-        }
-
-        function updateWishlistUI() {
-            // Update wishlist button states
-            document.querySelectorAll('.wishlist-btn').forEach(btn => {
-                const productId = btn.dataset.productId;
-                const isInWishlist = wishlist.some(item => item.id === productId);
-                btn.classList.toggle('text-red-500', isInWishlist);
-                btn.classList.toggle('text-gray-400', !isInWishlist);
-            });
-        }
     </script>
-
-    <!-- Additional Styles for Enhanced Features -->
-    <style>
-        .wishlist-btn {
-            transition: all 0.3s ease;
-        }
-        
-        .wishlist-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        @media (max-width: 768px) {
-            .hero-section h2 {
-                font-size: 2.5rem;
-            }
-            
-            .product-card {
-                margin-bottom: 1rem;
-            }
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-        }
-
-        /* Loading animation */
-        .loading {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: loading 1.5s infinite;
-        }
-        
-        @keyframes loading {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-    </style>
 </body>
-</html>
